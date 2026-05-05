@@ -11,7 +11,7 @@ import org.testng.annotations.BeforeMethod;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class BaseTest {
+public class OHBaseTest {
 	protected WebDriver driver;
     public Properties prop;
 

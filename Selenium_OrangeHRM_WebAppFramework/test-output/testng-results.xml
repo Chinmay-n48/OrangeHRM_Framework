@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2026-05-05T22:30:01 IST" name="Default suite" finished-at="2026-05-05T22:30:14 IST" duration-ms="12300">
+    <groups>
+    </groups>
+    <test started-at="2026-05-05T22:30:01 IST" name="Default test" finished-at="2026-05-05T22:30:14 IST" duration-ms="12300">
+      <class name="tests_orangeHRM.OHLoginPageTests">
+        <test-method is-config="true" signature="setup()[pri:0, instance:tests_orangeHRM.OHLoginPageTests@292b08d6]" started-at="2026-05-05T22:30:01 IST" name="setup" finished-at="2026-05-05T22:30:13 IST" duration-ms="11293" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method is-config="true" signature="setupPage()[pri:0, instance:tests_orangeHRM.OHLoginPageTests@292b08d6]" started-at="2026-05-05T22:30:13 IST" name="setupPage" finished-at="2026-05-05T22:30:13 IST" duration-ms="2" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupPage -->
+        <test-method signature="TC_OH_LoginPage_001()[pri:0, instance:tests_orangeHRM.OHLoginPageTests@292b08d6]" started-at="2026-05-05T22:30:13 IST" name="TC_OH_LoginPage_001" finished-at="2026-05-05T22:30:13 IST" duration-ms="717" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_OH_LoginPage_001 -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests_orangeHRM.OHLoginPageTests@292b08d6]" started-at="2026-05-05T22:30:13 IST" name="tearDown" finished-at="2026-05-05T22:30:14 IST" duration-ms="239" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- tests_orangeHRM.OHLoginPageTests -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
