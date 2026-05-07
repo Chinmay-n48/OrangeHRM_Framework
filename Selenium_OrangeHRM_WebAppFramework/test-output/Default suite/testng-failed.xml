@@ -7,8 +7,8 @@
         <methods>
           <include name="setup"/>
           <include name="tearDown"/>
-          <include name="TC_OH_LoginPage_001"/>
           <include name="setupPage"/>
+          <include name="TC_Login_UI_001"/>
         </methods>
       </class> <!-- tests_orangeHRM.OHLoginPageTests -->
     </classes>
