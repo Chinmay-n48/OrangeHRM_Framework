@@ -34,11 +34,5 @@
         <artifactId>commons-io</artifactId>
         <version>2.15.1</version>
     </dependency>
-
-    <dependency>
-    	<groupId>Selenium_SauceDemo_WebAppFrameWork</groupId>
-    	<artifactId>Selenium_SauceDemo_WebAppFrameWork</artifactId>
-    	<version>0.0.1-SNAPSHOT</version>
-    </dependency>
   </dependencies>
 </project>
