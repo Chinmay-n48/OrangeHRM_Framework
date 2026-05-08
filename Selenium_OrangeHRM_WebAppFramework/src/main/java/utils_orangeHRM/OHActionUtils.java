@@ -30,7 +30,5 @@ WebDriver driver;
 	    catch (Exception e) {
 	        return false;
 	    }
-	}
-	    
-	    
+	}	    
 }
