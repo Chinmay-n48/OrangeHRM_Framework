@@ -10,6 +10,7 @@ public class OHLoginPage {
 	public By UsernameField=By.xpath("//input[@name='username']");
 	public By PasswordField=By.xpath("//input[@name='password']");
 	public By LoginBTN=By.xpath("//button[@type='submit']");
+	public By ForgotPassword=By.xpath("//div[@class='orangehrm-login-forgot']");
 	 
 	public OHLoginPage(WebDriver driver) {
         this.driver = driver;

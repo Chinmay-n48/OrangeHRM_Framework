@@ -30,5 +30,14 @@ WebDriver driver;
 	    catch (Exception e) {
 	        return false;
 	    }
-	}	    
+	}
+	
+	public static boolean isEnabled(WebDriver driver, By locator) {
+		try {
+			return driver.findElement(locator).isEnabled();
+		}
+		catch(Exception e){
+			return false;
+		}
+	}
 }
