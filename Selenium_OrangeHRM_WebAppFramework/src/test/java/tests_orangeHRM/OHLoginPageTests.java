@@ -3,6 +3,7 @@ package tests_orangeHRM;
 import org.testng.annotations.Test;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
@@ -71,5 +72,22 @@ public class OHLoginPageTests extends OHBaseTest {
 	    	System.out.println(Title);
 	    	Assert.assertEquals(Title, "Dashboard" , "Dashboard page is not opened.");
 	    	Assert.assertEquals(driver.getCurrentUrl(), "https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index", "HomePage URL not matched");
+	    }
+	    
+	    @Test
+	    //Verify login using Enter key instead of Login button
+	    public void TC_LoginPage_005() {
+	    	driver.findElement(login.UsernameField).sendKeys("Admin");
+	    	driver.findElement(login.PasswordField).sendKeys("admin123");
+            driver.findElement(login.LoginBTN).sendKeys(Keys.ENTER);
+            String Title=driver.findElement(HomePage.PageTitle).getText();
+	    	System.out.println(Title);
+	    	Assert.assertEquals(Title, "Dashboard" , "Dashboard page is not opened.");
+	    }
+	    
+	    @Test
+	    //Verify login with blank username and blank password
+	    public void TC_LoginPage_006() {
+	    	
 	    }
 }
