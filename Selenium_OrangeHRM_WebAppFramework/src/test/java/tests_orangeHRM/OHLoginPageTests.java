@@ -88,6 +88,29 @@ public class OHLoginPageTests extends OHBaseTest {
 	    @Test
 	    //Verify login with blank username and blank password
 	    public void TC_LoginPage_006() {
+	    	login.Login("", "");
+	    	Assert.assertEquals(action.getText(driver, login.UNFValidationMsg), "Required", "The validation message text of the username field in not matched");
+	    	Assert.assertEquals(action.getText(driver, login.PFValidationMsg), "Required" , "The validation message text of the password field in not matched");	    	
+	    }
+	    @Test
+	    //Verify login with invalid username and valid password
+	    public void TC_LoginPage_007(){
+	    	login.Login("InvalidUser", "admin123");
+	    	wait.waitForVisibility(login.ErrorMsg, 20);
+	    	Assert.assertEquals(action.getText(driver, login.ErrorMsg), "Invalid credentials" , "Error Message text is not displayed or matched.");	    	
+	    }
+	    @Test
+	    //Verify login with valid username and invalid password
+	    public void TC_LoginPage_008() {
+	    	login.Login("Admin", "wrongpass");
+	    	wait.waitForVisibility(login.ErrorMsg, 20);
+	    	Assert.assertEquals(action.getText(driver, login.ErrorMsg), "Invalid credentials" , "Error message text is not displayed or matched.");
+	    }
+	    
+	    @Test
+	    //Verify login with SQL Injection attack input
+	    
+	    public void TC_LoginPage_009() {
 	    	
 	    }
 }

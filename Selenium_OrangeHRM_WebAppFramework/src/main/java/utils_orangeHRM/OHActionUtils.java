@@ -40,4 +40,15 @@ WebDriver driver;
 			return false;
 		}
 	}
+	
+	public static String getText(WebDriver driver, By locator) {
+		try {
+			
+		return driver.findElement(locator).getText();
+	}
+		catch(Exception e){
+			 System.out.println("Failed to get text: " + e.getMessage());
+		        return "text not extracted";		
+		}
+	}
 }
