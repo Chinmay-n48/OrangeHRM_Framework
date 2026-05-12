@@ -40,7 +40,7 @@ public class OHLoginPageTests extends OHBaseTest {
             Assert.assertTrue(action.isDisplayed(driver, login.UsernameField), "Username Field is not available");  
             Assert.assertTrue(action.isDisplayed(driver, login.PasswordField), "Password Field is not available");
             Assert.assertTrue(action.isDisplayed(driver, login.LoginBTN),"Submit button is not available");
-            Assert.assertTrue(action.isDisplayed(driver, login.ForgotPassword), "ForgotPassowrd Link is not available");
+            Assert.assertTrue(action.isDisplayed(driver, login.ForgotPassWodBTN), "ForgotPassowrd Link is not available");
 	    }
 	    
 	    @Test
@@ -57,7 +57,7 @@ public class OHLoginPageTests extends OHBaseTest {
 	    //Verify Password textbox visibility and masking behavior
 	    public void TC_LoginPage_003() {
 	    	wait.waitForVisibility(login.PasswordField, 20);
-	    	Assert.assertTrue(action.isDisplayed(driver, login.ForgotPassword), "PassWordField is not available");
+	    	Assert.assertTrue(action.isDisplayed(driver, login.ForgotPassWodBTN), "PassWordField is not available");
 	    	Assert.assertTrue(action.isEnabled(driver, login.PasswordField), "Passwordfield is not enabled");
 	    	driver.findElement(login.PasswordField).sendKeys("admin123");
 	    	String type=driver.findElement(login.PasswordField).getAttribute("Type");
@@ -108,9 +108,25 @@ public class OHLoginPageTests extends OHBaseTest {
 	    }
 	    
 	    @Test
-	    //Verify login with SQL Injection attack input
-	    
+	    //Verify login with SQL Injection attack input	    
 	    public void TC_LoginPage_009() {
+	    	login.Login("' OR 1=1 --", "' OR 1=1 --");
+	    	wait.waitForVisibility(login.ErrorMsg, 20);
+	    	Assert.assertEquals(action.getText(driver, login.ErrorMsg), "Invalid credentials", "Error message text is not displayed or matched.");
+	    }
+	    
+	    @Test
+	    //Verify login with XSS attack payload
+	    public void TC_LoginPage_010() {
+	    	login.Login("<script>alert('xss')</script>", "admin123");
+	    	wait.waitForVisibility(login.ErrorMsg, 20);
+	    	Assert.assertEquals(action.getText(driver, login.ErrorMsg), "Invalid credentials", "Error message text is not displayed or matched.");
+	    }
+	    
+	    @Test
+	    //Verify Forgot Password navigation functionality
+	    public void TC_LoginPage_011() {
+	    	action.click(driver, login.ForgotPassWodBTN);
 	    	
 	    }
 }

@@ -12,11 +12,11 @@ public class OHActionUtils {
 	
 WebDriver driver;
 	
-	public static void click(WebDriver driver, WebElement element) {
+	public static void click(WebDriver driver, By locator) {
 	    try {
 	        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-	        wait.until(ExpectedConditions.elementToBeClickable(element));
-	        element.click();
+	        wait.until(ExpectedConditions.elementToBeClickable(locator));
+	        driver.findElement(locator).click();
 	    } catch (Exception e) {
 	        System.out.println("Click failed: " + e.getMessage());
 	    }
