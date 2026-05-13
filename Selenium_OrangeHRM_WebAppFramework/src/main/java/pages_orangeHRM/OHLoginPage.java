@@ -14,7 +14,13 @@ public class OHLoginPage {
 	public By PFValidationMsg=By.xpath("(//div//span[@class='oxd-text oxd-text--span oxd-input-field-error-message oxd-input-group__message'])[2]");
 	public By ErrorMsg=By.xpath("//div[@role='alert']");
 	public By ForgotPassWodBTN=By.xpath("//div[@class='orangehrm-login-forgot']");
-	 
+	
+	//ForgotPassword Page
+	public By ResetPassWordPopup=By.xpath("//div[@class='orangehrm-card-container']");
+    public By ResetUserNameField=By.xpath("//div//input[@name='username']");
+    public By ResetPassWordBTN=By.xpath("//div//button[@type='submit']");
+    public By ResetPassWordLinkPopup=By.xpath("//div//div[@class='orangehrm-card-container']");
+	
 	public OHLoginPage(WebDriver driver) {
         this.driver = driver;
     }

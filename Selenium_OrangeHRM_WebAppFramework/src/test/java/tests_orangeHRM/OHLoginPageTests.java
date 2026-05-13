@@ -125,8 +125,24 @@ public class OHLoginPageTests extends OHBaseTest {
 	    
 	    @Test
 	    //Verify Forgot Password navigation functionality
-	    public void TC_LoginPage_011() {
+	    public void TC_LoginPage_015() {
 	    	action.click(driver, login.ForgotPassWodBTN);
-	    	
+	    	Assert.assertTrue(action.isDisplayed(driver, login.ResetPassWordPopup), "Reset Password popup is not displayed");	    	
+	    }
+	    
+	    @Test
+	    //Verify password reset request with valid username	    
+	    public void TC_LoginPage_016(){
+	    	action.click(driver, login.ForgotPassWodBTN);
+	    	driver.findElement(login.ResetUserNameField).sendKeys("Test");
+	    	action.click(driver, login.ResetPassWordBTN);
+	    	wait.waitForVisibility(login.ResetPassWordLinkPopup, 20);
+	    	Assert.assertTrue(action.isDisplayed(driver, login.ResetPassWordLinkPopup), "'Reset Password link sent successfully' popup is not displayed");	
+	    	String Text=action.getText(driver, login.ResetPassWordLinkPopup);
+	    	Assert.assertTrue(Text.contains("Reset Password link sent successfully"), "Popup tile is not matched or available");
+	    	Assert.assertTrue(Text.contains("A reset password link has been sent to you via email."), "Popup mesage not matched or available");
+	    	Assert.assertTrue(Text.contains("You can follow that link and select a new password."), "Popup message is not matched or available");
+	    	Assert.assertTrue(Text.contains("Note:"), "Popup footer message is not matched or available");
+	    	Assert.assertTrue(Text.contains("If the email does not arrive, please contact your OrangeHRM Administrator."), "Popup footer message is not matched or available");
 	    }
 }
