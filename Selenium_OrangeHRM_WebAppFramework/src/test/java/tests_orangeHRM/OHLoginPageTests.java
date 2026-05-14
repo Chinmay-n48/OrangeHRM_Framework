@@ -145,4 +145,22 @@ public class OHLoginPageTests extends OHBaseTest {
 	    	Assert.assertTrue(Text.contains("Note:"), "Popup footer message is not matched or available");
 	    	Assert.assertTrue(Text.contains("If the email does not arrive, please contact your OrangeHRM Administrator."), "Popup footer message is not matched or available");
 	    }
+	    @Test
+	    //Verify session persistence after browser refresh
+	    public void TC_LoginPage_017() {
+	    	login.Login("Admin", "admin123");
+	    	Assert.assertEquals(driver.getCurrentUrl(), "https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index" , "Url is not matched ");
+	    	driver.navigate().refresh();
+	    	Assert.assertEquals(driver.getCurrentUrl(), "https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index" , "Url is not matched ");
+	    	Assert.assertTrue(action.isDisplayed(driver, HomePage.PageTitle), "Homepage is not opened");	    	
+	    }
+	    @Test
+	    //Verify successful logout functionality
+	    public void TC_LoginPage_018(){
+	    	login.Login("Admin", "admin123");
+	    	wait.waitForVisibility(HomePage.PageTitle, 20);
+	    	Assert.assertEquals(driver.getCurrentUrl(), "https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index" , "Url is not matched ");
+	    	HomePage.LogOut();
+	    	//Assert.assertEquals(driver.getCurrentUrl(), "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+	    }	    
 }

@@ -1,6 +1,7 @@
 package utils_orangeHRM;
 
 import java.time.Duration;
+import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -50,5 +51,48 @@ WebDriver driver;
 			 System.out.println("Failed to get text: " + e.getMessage());
 		        return "text not extracted";		
 		}
+	}
+	
+	public static void SelectByValueOptionDD(WebDriver driver, By options, By locator, String Value) {			
+		try {
+			WebDriverWait wait =
+	                new WebDriverWait(driver, Duration.ofSeconds(10));
+
+	        // Click dropdown
+	        wait.until(
+	                ExpectedConditions.elementToBeClickable(locator))
+	                .click();
+
+	        // Wait for options
+	        wait.until(
+	                ExpectedConditions.visibilityOfAllElementsLocatedBy(options));
+
+	        List<WebElement> allOptions =
+	                driver.findElements(options);
+
+	        for (WebElement option : allOptions) {
+
+	            String actualValue =
+	                    option.getText().trim();
+
+	            if (actualValue.equalsIgnoreCase(Value.trim())) {
+
+	                wait.until(
+	                        ExpectedConditions.elementToBeClickable(option));
+
+	                option.click();
+
+	                System.out.println("Clicked: " + actualValue);
+
+	                return;
+		        }
+		    }	
+		    System.out.println("Dropdown value selected");
+		}
+		catch(Exception e) {
+	        	 System.out.println("Unable to select dropdown value");
+	             e.printStackTrace();	        
+		}
+		
 	}
 }
