@@ -160,7 +160,7 @@ public class OHLoginPageTests extends OHBaseTest {
 	    	login.Login("Admin", "admin123");
 	    	wait.waitForVisibility(HomePage.PageTitle, 20);
 	    	Assert.assertEquals(driver.getCurrentUrl(), "https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index" , "Url is not matched ");
-	    	HomePage.LogOut();
-	    	//Assert.assertEquals(driver.getCurrentUrl(), "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
-	    }	    
+	    	HomePage.LogOut();	    	
+	    	Assert.assertEquals(driver.getCurrentUrl(), "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+	    }
 }

@@ -53,41 +53,21 @@ WebDriver driver;
 		}
 	}
 	
-	public static void SelectByValueOptionDD(WebDriver driver, By options, By locator, String Value) {			
-		try {
-			WebDriverWait wait =
-	                new WebDriverWait(driver, Duration.ofSeconds(10));
+	public static void SelectByValueOptionDD(WebDriver driver, By options, By locator, String Value) {	
+		
+		 try {
+		        driver.findElement(locator).click();
 
-	        // Click dropdown
-	        wait.until(
-	                ExpectedConditions.elementToBeClickable(locator))
-	                .click();
+		        List<WebElement> allOptions = driver.findElements(options);
 
-	        // Wait for options
-	        wait.until(
-	                ExpectedConditions.visibilityOfAllElementsLocatedBy(options));
+		        for(WebElement option : allOptions) {
 
-	        List<WebElement> allOptions =
-	                driver.findElements(options);
+		            if(option.getText().trim().equals(Value)) {
 
-	        for (WebElement option : allOptions) {
-
-	            String actualValue =
-	                    option.getText().trim();
-
-	            if (actualValue.equalsIgnoreCase(Value.trim())) {
-
-	                wait.until(
-	                        ExpectedConditions.elementToBeClickable(option));
-
-	                option.click();
-
-	                System.out.println("Clicked: " + actualValue);
-
-	                return;
-		        }
-		    }	
-		    System.out.println("Dropdown value selected");
+		                option.click();
+		                break;
+		            }
+		        }	
 		}
 		catch(Exception e) {
 	        	 System.out.println("Unable to select dropdown value");
