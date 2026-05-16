@@ -25,7 +25,7 @@ public class OHLoginPageTests extends OHBaseTest {
     @BeforeMethod
     public void setupPage() {
         login = new OHLoginPage(driver);
-        action = new OHActionUtils();
+        action = new OHActionUtils(driver);
         wait = new OHWaitUtils(driver);
         HomePage=new OHHomePage(driver);
     }
@@ -162,5 +162,20 @@ public class OHLoginPageTests extends OHBaseTest {
 	    	Assert.assertEquals(driver.getCurrentUrl(), "https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index" , "Url is not matched ");
 	    	HomePage.LogOut();	    	
 	    	Assert.assertEquals(driver.getCurrentUrl(), "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+	    }
+	    @Test
+	    //Verify keyboard navigation support
+	    public void TC_LoginPage_020() throws InterruptedException {
+	    	wait.waitForVisibility(login.UsernameField,30);
+	        action.typeText("Admin");
+	        // Password
+	        action.pressKeyBoardKey(Keys.TAB);
+	        action.typeText("admin123");
+	        // Login Button
+	        action.pressKeyBoardKey(Keys.TAB);
+	        // Press ENTER
+	        action.pressKeyBoardKey(Keys.ENTER);
+	        Thread.sleep(5000);
+	        Assert.assertTrue(action.isDisplayed(driver, HomePage.PageTitle));
 	    }
 }

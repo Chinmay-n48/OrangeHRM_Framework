@@ -4,14 +4,25 @@ import java.time.Duration;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class OHActionUtils {
 	
 WebDriver driver;
+Actions action;
+
+// Constructor
+public OHActionUtils(WebDriver driver) {
+
+    this.driver = driver;
+
+    action = new Actions(driver);
+}
 	
 	public static void click(WebDriver driver, By locator) {
 	    try {
@@ -75,4 +86,27 @@ WebDriver driver;
 		}
 		
 	}
+	
+    public void pressKeyBoardKey(Keys key) {
+    	
+    	try {
+
+        action.sendKeys(key).perform();
+    }
+    	catch(Exception e) {
+    		System.out.println("Keyboard action failed");
+    	    throw e;
+    	}
+    }
+    
+    // Type text using keyboard
+    public void typeText(String value) {
+         try {
+        action.sendKeys(value).perform();
+    }
+         catch(Exception e) {
+        	 System.out.println("Keyboard action failed");
+     	    throw e;
+         }
+    }
 }
