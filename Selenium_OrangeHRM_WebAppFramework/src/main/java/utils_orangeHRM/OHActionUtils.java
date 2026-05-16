@@ -33,6 +33,17 @@ public OHActionUtils(WebDriver driver) {
 	        System.out.println("Click failed: " + e.getMessage());
 	    }
 	}
+	
+	public void doubleClick(By locator) {
+		try {
+			WebElement element=driver.findElement(locator);
+			action.doubleClick(element).perform();
+		}
+		catch(Exception e) {
+			System.out.println("DoubleClick action not performed");
+			throw e;
+		}
+	}
 	    
 	public static boolean isDisplayed(WebDriver driver, By locator) {
 

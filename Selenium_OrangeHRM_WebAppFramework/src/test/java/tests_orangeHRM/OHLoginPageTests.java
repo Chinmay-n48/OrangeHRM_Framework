@@ -176,6 +176,17 @@ public class OHLoginPageTests extends OHBaseTest {
 	        // Press ENTER
 	        action.pressKeyBoardKey(Keys.ENTER);
 	        Thread.sleep(5000);
-	        Assert.assertTrue(action.isDisplayed(driver, HomePage.PageTitle));
+	        Assert.assertTrue(action.isDisplayed(driver, HomePage.PageTitle), "Homepage not loads");
+	    }
+	    
+	    @Test
+	    //Verify double click behavior on Login button
+	    public void TC_LoginPage_022() {
+	    	driver.findElement(login.UsernameField).sendKeys("Admin");
+	    	driver.findElement(login.PasswordField).sendKeys("admin123");
+	    	action.doubleClick(login.LoginBTN);
+	    	Assert.assertTrue(action.isDisplayed(driver, HomePage.PageTitle), "Homepage not loads");
+	    	Assert.assertEquals(driver.getWindowHandles().size(), 1);
+	    	Assert.assertTrue(driver.getCurrentUrl().contains("dashboard"));
 	    }
 }
